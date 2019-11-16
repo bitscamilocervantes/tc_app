@@ -8,13 +8,9 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    path: 'fcomments',
+    loadChildren: () => import('./pages/fcomments/fcomments.module').then( m => m.FcommentsPageModule)
   },
-  {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  }
 ];
 
 @NgModule({
