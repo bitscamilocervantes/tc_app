@@ -9,6 +9,7 @@ import { FcommentsPageRoutingModule } from './fcomments-routing.module';
 
 import { FcommentsPage } from './fcomments.page';
 import { CommentComponent } from '../../components/comment/comment.component';
+import { CommentbrowserComponent } from '../../components/commentbrowser/commentbrowser.component';
 
 
 @NgModule({
@@ -20,9 +21,13 @@ import { CommentComponent } from '../../components/comment/comment.component';
   ],
   declarations: [
     FcommentsPage,
-    CommentComponent
+    CommentComponent,
+    CommentbrowserComponent
   ],
-  exports: [CommentComponent],
+  exports: [
+    CommentComponent,
+    CommentbrowserComponent
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class FcommentsPageModule {}
