@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentsServicesService } from '../../core/servicios/comments-services.service';
+import { Comments } from 'src/app/core/interfaces/comments';
 
 @Component({
   selector: 'app-fcomments',
@@ -7,8 +8,8 @@ import { CommentsServicesService } from '../../core/servicios/comments-services.
   styleUrls: ['./fcomments.page.scss'],
 })
 export class FcommentsPage implements OnInit {
-  comments: any = [];
-  
+  comments:Comments[] = [];
+  title: string = "Comentarios destacados";
 
   constructor(
     protected commentService: CommentsServicesService
@@ -16,16 +17,20 @@ export class FcommentsPage implements OnInit {
    
   }
 
-  ngOnInit() {    
+  fetchComments() {
     this.commentService.getRawComments().subscribe(
       (data) => {
-        this.comments = data['results'];
+        this.comments = data;
         console.log(data);
       },
       (error) => {
         console.error(error);
       }
-    )
+    );
+  }
+
+  ngOnInit() {    
+    this.fetchComments();
   }
 
 }

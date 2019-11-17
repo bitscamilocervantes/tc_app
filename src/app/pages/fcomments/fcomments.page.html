@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>fcomments</ion-title>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+   
+    <app-comment *ngFor="let comment of comments" [comment]="comment">
 
+    </app-comment>   
+      
 </ion-content>
