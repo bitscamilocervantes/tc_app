@@ -10,16 +10,26 @@ import { map } from 'rxjs/operators';
 })
 export class CommentsServicesService {
 
-  //comments:any = [];
-
   constructor(private http: HttpClient) { }
 
+  comments:Comments[] = [];
 
-  getRawComments(){
-    return this.http.get<any>(`${environment.bUrl_tc}/pages/163?_fields=_links&_embed`).pipe(
-      map(model => {
-        //this.comments = model._embedded.replies;
-        return model._embedded.replies;
+  getRawComments() : Observable<Comments[]>{
+    return this.http.get<any>(environment.bUrl_tc+'/pages/163?_fields=_links&_embed').pipe(
+      map(item => {
+        item = item._embedded.replies;
+        item[0].forEach(i => {
+          let comment:Comments;
+          comment = {
+            author_name: i.author_name,
+            date: i.date,
+            rendered_comment: i.content.rendered,
+            avatar_url: i.author_avatar_urls[48],
+            permalink: i.link
+          };   
+          this.comments.push(comment);  
+        }); 
+        return this.comments;
       })
     );
   }

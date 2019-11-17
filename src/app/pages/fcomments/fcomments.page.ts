@@ -7,11 +7,25 @@ import { CommentsServicesService } from '../../core/servicios/comments-services.
   styleUrls: ['./fcomments.page.scss'],
 })
 export class FcommentsPage implements OnInit {
+  comments: any = [];
+  
 
-  constructor() { }
+  constructor(
+    protected commentService: CommentsServicesService
+  ) { 
+   
+  }
 
-  ngOnInit() {
-    console.log("hola");
+  ngOnInit() {    
+    this.commentService.getRawComments().subscribe(
+      (data) => {
+        this.comments = data['results'];
+        console.log(data);
+      },
+      (error) => {
+        console.error(error);
+      }
+    )
   }
 
 }

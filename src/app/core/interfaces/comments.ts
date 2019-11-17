@@ -5,3 +5,4 @@ export interface Comments {
     avatar_url:string;
     permalink:string;
 }
+
