@@ -1,10 +1,10 @@
 <ion-item (click)="testClick()">
     <ion-avatar slot="start">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+      <img [src]="comment.avatar_url">
     </ion-avatar>
-    <ion-label>
-      <p>Icon on right</p>
-      <h3>{{ comment.rendered_comment }}</h3>
+    <ion-label class="ion-text-wrap">
+      <p>{{ comment.author_name }} - {{ comment.date | date: 'medium' }}</p>
+      <h3 [innerHTML]='comment.rendered_comment'></h3>
       
     </ion-label>
     <ion-button fill="outline" slot="end">View</ion-button>
