@@ -3,12 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'fcomments',
+    path: '',
     loadChildren: () => import('./pages/fcomments/fcomments.module').then( m => m.FcommentsPageModule)
   },
 ];
