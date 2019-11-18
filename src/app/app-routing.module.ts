@@ -8,8 +8,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
+    path: 'featured_comments',
     loadChildren: () => import('./pages/fcomments/fcomments.module').then( m => m.FcommentsPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./pages/lnews/lnews.module').then( m => m.LnewsPageModule)
   },
 ];
 

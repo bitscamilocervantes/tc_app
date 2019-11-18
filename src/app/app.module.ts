@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 //services
 import { CommentsServicesService } from './core/servicios/comments-services.service';
+import { PostsService } from './core/servicios/posts.service';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CommentsServicesService } from './core/servicios/comments-services.serv
     StatusBar,
     SplashScreen,
     CommentsServicesService,
+    PostsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
