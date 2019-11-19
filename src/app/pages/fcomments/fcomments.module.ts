@@ -9,7 +9,7 @@ import { FcommentsPageRoutingModule } from './fcomments-routing.module';
 
 import { FcommentsPage } from './fcomments.page';
 import { CommentComponent } from '../../components/comment/comment.component';
-import { CommentbrowserComponent } from '../../components/commentbrowser/commentbrowser.component';
+import { SharedModule } from '../../shared/components/shared.module';
 
 
 @NgModule({
@@ -17,16 +17,15 @@ import { CommentbrowserComponent } from '../../components/commentbrowser/comment
     CommonModule,
     FormsModule,
     IonicModule,
-    FcommentsPageRoutingModule
+    FcommentsPageRoutingModule,
+    SharedModule
   ],
   declarations: [
     FcommentsPage,
-    CommentComponent,
-    CommentbrowserComponent
+    CommentComponent
   ],
   exports: [
     CommentComponent,
-    CommentbrowserComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

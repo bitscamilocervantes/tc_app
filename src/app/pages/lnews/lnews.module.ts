@@ -8,23 +8,22 @@ import { LnewsPageRoutingModule } from './lnews-routing.module';
 
 import { LnewsPage } from './lnews.page';
 import { PostsComponent } from '../../components/posts/posts.component';
-import { CommentbrowserComponent } from 'src/app/components/commentbrowser/commentbrowser.component';
+import { SharedModule } from '../../shared/components/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LnewsPageRoutingModule
+    LnewsPageRoutingModule,
+    SharedModule
   ],
   declarations: [
     LnewsPage,
-    PostsComponent,
-    CommentbrowserComponent
+    PostsComponent
   ],
   exports: [
-    PostsComponent,
-    CommentbrowserComponent
+    PostsComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
