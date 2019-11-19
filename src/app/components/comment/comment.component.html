@@ -7,6 +7,6 @@
       <h3 [innerHTML]='comment.rendered_comment'></h3>
       
     </ion-label>
-    <app-commentbrowser [url]='comment.permalink'></app-commentbrowser>
+    <app-commentbrowser [url]='comment.permalink' text="Permalink" slot="end"></app-commentbrowser>
 
   </ion-item>

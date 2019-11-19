@@ -8,6 +8,7 @@ import { LnewsPageRoutingModule } from './lnews-routing.module';
 
 import { LnewsPage } from './lnews.page';
 import { PostsComponent } from '../../components/posts/posts.component';
+import { CommentbrowserComponent } from 'src/app/components/commentbrowser/commentbrowser.component';
 
 @NgModule({
   imports: [
@@ -18,10 +19,12 @@ import { PostsComponent } from '../../components/posts/posts.component';
   ],
   declarations: [
     LnewsPage,
-    PostsComponent
+    PostsComponent,
+    CommentbrowserComponent
   ],
   exports: [
-    PostsComponent
+    PostsComponent,
+    CommentbrowserComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

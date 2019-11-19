@@ -1,6 +1,4 @@
 <ion-card>
-
-    
     <ion-card-header>
       <ion-card-subtitle>Publicado en {{ post.date | date: 'medium' }}</ion-card-subtitle>
       <ion-card-title [innerHTML]='post.title'></ion-card-title>
@@ -17,12 +15,9 @@
               </ion-col>             
             </ion-row>
         </ion-grid>
-      
-      
-      
+
     </ion-card-content>
     <ion-item>
-        <ion-button fill="outline" slot="end">Leer más</ion-button>
-      
+        <app-commentbrowser [url]='post.link' text="Leer más" slot="end"></app-commentbrowser>
       </ion-item>
   </ion-card>

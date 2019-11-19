@@ -1,1 +1,1 @@
-<ion-button fill="outline" slot="end" (click)="openURL()">View</ion-button>
+<ion-button [slot]="slot != '' ? slot : end" (click)="openURL()">{{ text }}</ion-button>

@@ -9,6 +9,8 @@ const { Browser } = Plugins;
 })
 export class CommentbrowserComponent implements OnInit {
   @Input() url: string;
+  @Input() text:string;
+  @Input() slot:string;
   constructor() { }
 
   async openURL(){
