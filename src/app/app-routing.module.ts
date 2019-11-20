@@ -15,6 +15,14 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./pages/lnews/lnews.module').then( m => m.LnewsPageModule)
   },
+  {
+    path: 'ediciones',
+    loadChildren: () => import('./pages/ediciones/ediciones.module').then( m => m.EdicionesPageModule)
+  },
+  {
+    path: 'ediciones/:id',
+    loadChildren: () => import('./pages/ediciones/pages/edicionesposts/edicionesposts.module').then( m => m.EdicionespostsPageModule)
+  },
 ];
 
 @NgModule({

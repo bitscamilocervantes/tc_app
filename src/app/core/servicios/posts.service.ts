@@ -34,4 +34,25 @@ export class PostsService {
       })
     );
   }
+
+  getPostsByCategoryId(id:number) : Observable<Posts[]>{
+    return this.http.get<any>(environment.bUrl_tc+'/posts?categories='+id+'&_embed&_fields=date,link,title,content,excerpt,_links,_embedded').pipe(
+      map(data => {        
+        data.forEach(i => {
+          let post:Posts;
+          post = {
+            date: i.date,
+            link: i.link,
+            title: i.title.rendered,
+            content: i.content.rendered,
+            excerpt: i.excerpt.rendered,
+            featured_media_thumb: i._embedded['wp:featuredmedia'] != null ? i._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url : '',
+            featured_media_full: i._embedded['wp:featuredmedia'] != null ? i._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url: '',
+          };   
+          this.posts.push(post);  
+        }); 
+        return this.posts;
+      })
+    );
+  }
 }

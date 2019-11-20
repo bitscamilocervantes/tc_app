@@ -4,27 +4,25 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LnewsPageRoutingModule } from './lnews-routing.module';
+import { EdicionesPageRoutingModule } from './ediciones-routing.module';
 
-import { LnewsPage } from './lnews.page';
-import { PostsComponent } from '../../shared/components/posts/posts.component';
-import { SharedModule } from '../../shared/components/shared.module';
+import { EdicionesPage } from './ediciones.page';
+import { EdicionesComponent } from './components/ediciones/ediciones.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LnewsPageRoutingModule,
-    SharedModule
+    EdicionesPageRoutingModule
   ],
   declarations: [
-    LnewsPage,
-    
+    EdicionesPage,
+    EdicionesComponent
   ],
   exports: [
-
+    EdicionesComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
-export class LnewsPageModule {}
+export class EdicionesPageModule {}
