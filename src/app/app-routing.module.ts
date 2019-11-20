@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'ediciones/:id',
     loadChildren: () => import('./pages/ediciones/pages/edicionesposts/edicionesposts.module').then( m => m.EdicionespostsPageModule)
   },
+  {
+    path: 'digitales',
+    loadChildren: () => import('./pages/digitales/digitales.module').then( m => m.DigitalesPageModule)
+  },
+  {
+    path: 'digitales/:id',
+    loadChildren: () => import('./pages/digitales/pages/digitaldetalle/digitaldetalle.module').then( m => m.DigitaldetallePageModule)
+  },
 ];
 
 @NgModule({

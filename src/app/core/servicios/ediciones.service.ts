@@ -12,10 +12,13 @@ export class EdicionesService {
 
   ediciones:Ediciones[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    
+   }
 
-  getRawEdiciones() : Observable<Ediciones[]>{
-    return this.http.get<any>(environment.bUrl_tc+'/categories?parent=1617').pipe(
+  getRawEdiciones(id:number = 1617) : Observable<Ediciones[]>{
+    this.ediciones = [];
+    return this.http.get<any>(environment.bUrl_tc+'/categories?parent='+id).pipe(
       map(data => {        
         data.forEach(i => {
           let edicion:Ediciones;

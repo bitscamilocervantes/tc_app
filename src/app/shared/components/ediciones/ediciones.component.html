@@ -1,0 +1,16 @@
+<div *ngIf="digital == 1">
+    <ion-card [href]="'/digitales/'+edicion.id">
+      <ion-card-header>
+        <ion-card-subtitle>{{ edicion.nombre }}</ion-card-subtitle>
+        <ion-card-title [innerHTML]='edicion.descripcion'></ion-card-title>
+      </ion-card-header>
+    </ion-card>
+</div>
+<div *ngIf="digital == null">
+    <ion-card [href]="'/ediciones/'+edicion.id">
+      <ion-card-header>
+        <ion-card-subtitle>{{ edicion.nombre }}</ion-card-subtitle>
+        <ion-card-title [innerHTML]='edicion.descripcion'></ion-card-title>
+      </ion-card-header>
+    </ion-card>
+</div>

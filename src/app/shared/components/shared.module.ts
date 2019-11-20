@@ -2,20 +2,23 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { CommentbrowserComponent } from './commentbrowser/commentbrowser.component';
 import { PostsComponent } from './posts/posts.component';
+import { EdicionesComponent } from './ediciones/ediciones.component';
 
 
 
 @NgModule({
   declarations: [
     CommentbrowserComponent,
-    PostsComponent
+    PostsComponent,
+    EdicionesComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
     CommentbrowserComponent,
-    PostsComponent
+    PostsComponent,
+    EdicionesComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

@@ -4,26 +4,25 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EdicionesPageRoutingModule } from './ediciones-routing.module';
+import { DigitaldetallePageRoutingModule } from './digitaldetalle-routing.module';
 
-import { EdicionesPage } from './ediciones.page';
-import { SharedModule } from 'src/app/shared/components/shared.module';
+import { DigitaldetallePage } from './digitaldetalle.page';
+import { EdiciondigitalComponent } from '../../componentes/ediciondigital/ediciondigital.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EdicionesPageRoutingModule,
-    SharedModule
+    DigitaldetallePageRoutingModule
   ],
   declarations: [
-    EdicionesPage,
-    
+    DigitaldetallePage,
+    EdiciondigitalComponent
   ],
   exports: [
-    
+    EdiciondigitalComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
-export class EdicionesPageModule {}
+export class DigitaldetallePageModule {}

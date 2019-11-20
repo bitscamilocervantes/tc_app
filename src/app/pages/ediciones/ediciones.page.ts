@@ -8,7 +8,7 @@ import { Ediciones } from 'src/app/core/interfaces/ediciones';
   styleUrls: ['./ediciones.page.scss'],
 })
 export class EdicionesPage implements OnInit {
-  ediciones:Ediciones[]
+  ediciones:Ediciones[];
   title:string = 'Ediciones';
 
   constructor(

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="posts == null">
+      <ion-label>
+        <p style="padding: 10px">Muy pronto será publicado este número de la edición digital.</p>
+      </ion-label>
+  </div>
+  <app-ediciondigital *ngFor="let post of posts" [post]="post">
+
+  </app-ediciondigital>
+</ion-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Ediciones } from '../../../../core/interfaces/ediciones';
+import { Ediciones } from '../../../core/interfaces/ediciones';
 
 @Component({
   selector: 'app-edicion',
@@ -8,8 +8,13 @@ import { Ediciones } from '../../../../core/interfaces/ediciones';
 })
 export class EdicionesComponent implements OnInit {
   @Input() edicion:Ediciones;
+  @Input() digital:number;
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.digital != 1){
+      this.digital = null;
+    }
+  }
 
 }
