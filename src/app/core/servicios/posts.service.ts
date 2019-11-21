@@ -15,6 +15,7 @@ export class PostsService {
   posts:Posts[] = [];
 
   getRawPosts() : Observable<Posts[]>{
+    this.posts = [];
     return this.http.get<any>(environment.bUrl_tc+'/posts?categories=1615&_embed&_fields=date,link,title,content,excerpt,_links,_embedded').pipe(
       map(data => {        
         data.forEach(i => {
@@ -36,6 +37,7 @@ export class PostsService {
   }
 
   getPostsByCategoryId(id:number) : Observable<Posts[]>{
+    this.posts = [];
     return this.http.get<any>(environment.bUrl_tc+'/posts?categories='+id+'&_embed&_fields=date,link,title,content,excerpt,_links,_embedded').pipe(
       map(data => {        
         data.forEach(i => {

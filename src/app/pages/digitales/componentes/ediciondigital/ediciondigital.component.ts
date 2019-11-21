@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Posts } from 'src/app/core/interfaces/posts';
+import { Plugins } from '@capacitor/core';
+const { Browser } = Plugins;
 
 @Component({
   selector: 'app-ediciondigital',
@@ -6,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ediciondigital.component.scss'],
 })
 export class EdiciondigitalComponent implements OnInit {
+  @Input() post:Posts;
 
   constructor() { }
 
-  ngOnInit() {}
+  async openURL(){
+    await Browser.open({ url : this.post.link});
+  }
+
+  ngOnInit() {
+    console.log(this.post);
+  }
 
 }
