@@ -19,17 +19,17 @@ export class AppComponent {
     {
       title: 'Comentarios destacados',
       url: '/featured_comments',
-      icon: 'list'
+      icon: 'chatbubbles'
     },
     {
       title: 'Archivo de noticias',
       url: '/ediciones',
-      icon: 'list'
+      icon: 'archive'
     },
     {
       title: 'Ediciones digitales',
       url: '/digitales',
-      icon: 'list'
+      icon: 'paper'
     }
   ];
 

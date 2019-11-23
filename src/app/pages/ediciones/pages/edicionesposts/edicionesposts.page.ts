@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Posts } from 'src/app/core/interfaces/posts';
 import { PostsService } from 'src/app/core/servicios/posts.service';
 import { EdicionesService } from 'src/app/core/servicios/ediciones.service';
 import { Ediciones } from 'src/app/core/interfaces/ediciones';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-edicionesposts',
@@ -11,11 +12,16 @@ import { Ediciones } from 'src/app/core/interfaces/ediciones';
   styleUrls: ['./edicionesposts.page.scss'],
 })
 export class EdicionespostsPage implements OnInit {
+  @ViewChild(IonInfiniteScroll, null) infiniteScroll: IonInfiniteScroll;
   id = null;
   posts:Posts[];
   edicion:Ediciones;
   nombre_edicion:string;
   title: string = "Noticias de la edición";
+  flag:boolean = true;
+  page = 1;
+  maximumPages = 3;
+
   
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -24,9 +30,10 @@ export class EdicionespostsPage implements OnInit {
     ) { }
 
   fetchPostsByEdicionId(cid:number) {
-    this.postsService.getPostsByCategoryId(cid).subscribe(
+    this.postsService.getPostsByCategoryId(cid,this.page).subscribe(
       (data) => {
         this.posts = data;
+        this.flag = false;
         console.log(data);
       },
       (error) => {
@@ -46,6 +53,18 @@ export class EdicionespostsPage implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  loadMore(event) {
+    this.page++;
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    if(this.id > 0){
+      this.fetchPostsByEdicionId(this.id);
+    }
+ 
+    if (this.page === this.maximumPages) {
+      event.target.disabled = true;
+    }
   }
 
   ngOnInit() {

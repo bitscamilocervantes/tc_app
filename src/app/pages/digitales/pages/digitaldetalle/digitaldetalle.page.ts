@@ -12,6 +12,7 @@ export class DigitaldetallePage implements OnInit {
   id = null;
   posts:Posts[];
   title:string;
+  flag:boolean = true;
 
   constructor(
     protected postsService:PostsService,
@@ -21,8 +22,10 @@ export class DigitaldetallePage implements OnInit {
   fetchPosts(cid:number) {
     this.postsService.getPostsByCategoryId(cid).subscribe(
       (data) => {
+        this.flag = false;
         if(data.length == 0){
           this.posts = null;
+          
           this.title = 'Edición digital';
         }
         else{

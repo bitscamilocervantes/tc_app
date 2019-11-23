@@ -14,8 +14,9 @@ export class CommentsServicesService {
 
   comments:Comments[] = [];
 
-  getRawComments() : Observable<Comments[]>{
-    return this.http.get<any>(environment.bUrl_tc+'/pages/163?_fields=_links&_embed').pipe(
+  getRawComments(page:number = 0) : Observable<Comments[]>{
+    let link = page > 0 ? '/pages/163?_fields=_links&_embed&per_page=5&page'+page : '/pages/163?_fields=_links&_embed' ;
+    return this.http.get<any>(environment.bUrl_tc+link).pipe(
       map(item => {
         item = item._embedded.replies;
         item[0].forEach(i => {

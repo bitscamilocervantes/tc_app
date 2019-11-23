@@ -16,9 +16,12 @@ export class EdicionesService {
     
    }
 
-  getRawEdiciones(id:number = 1617) : Observable<Ediciones[]>{
-    this.ediciones = [];
-    return this.http.get<any>(environment.bUrl_tc+'/categories?parent='+id).pipe(
+  getRawEdiciones(id:number = 1617, page:number = 0) : Observable<Ediciones[]>{
+    this.ediciones = page > 0 ? this.ediciones : [];
+    let link:string = (page > 0 ? '/categories?parent='+id+'&per_page=7&page='+page : '/categories?parent='+id);
+    console.log(id);
+    console.log(link);
+    return this.http.get<any>(environment.bUrl_tc+link).pipe(
       map(data => {        
         data.forEach(i => {
           let edicion:Ediciones;
