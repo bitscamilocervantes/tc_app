@@ -17,10 +17,11 @@ export class EdicionesService {
    }
 
   getRawEdiciones(id:number = 1617, page:number = 0) : Observable<Ediciones[]>{
-    this.ediciones = page > 0 ? this.ediciones : [];
+    this.ediciones = page > 1 ? this.ediciones : [];
     let link:string = (page > 0 ? '/categories?parent='+id+'&per_page=7&page='+page : '/categories?parent='+id);
     console.log(id);
     console.log(link);
+    console.log(page);
     return this.http.get<any>(environment.bUrl_tc+link).pipe(
       map(data => {        
         data.forEach(i => {
