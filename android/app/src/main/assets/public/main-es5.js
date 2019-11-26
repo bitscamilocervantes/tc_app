@@ -447,7 +447,7 @@ module.exports = webpackAsyncContext;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <ion-header>\n        <ion-toolbar>\n          <ion-title>Menu</ion-title>\n        </ion-toolbar>\n      </ion-header>\n      <ion-content>\n        <ion-list>\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\n              <ion-label>\n                {{p.title}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n"
+module.exports = "<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <ion-header>\n        <ion-toolbar>\n          <ion-title>            \n            <ion-img style=\"width: 160px\" src=\"http://periodicotierracaliente.co/wp-content/uploads/2019/04/logotcng1.png\"></ion-img>\n          </ion-title>\n        </ion-toolbar>\n      </ion-header>\n      <ion-content>\n        <ion-list>\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\n              <ion-label>\n                {{p.title}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n"
 
 /***/ }),
 
@@ -469,18 +469,34 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     {
-        path: '',
+        path: 'home',
         redirectTo: 'home',
         pathMatch: 'full'
     },
     {
-        path: 'home',
-        loadChildren: function () { return __webpack_require__.e(/*! import() | home-home-module */ "home-home-module").then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
+        path: 'featured_comments',
+        loadChildren: function () { return Promise.all(/*! import() | pages-fcomments-fcomments-module */[__webpack_require__.e("default~pages-digitales-digitales-module~pages-digitales-pages-digitaldetalle-digitaldetalle-module~~5f96c5b7"), __webpack_require__.e("common"), __webpack_require__.e("pages-fcomments-fcomments-module")]).then(__webpack_require__.bind(null, /*! ./pages/fcomments/fcomments.module */ "./src/app/pages/fcomments/fcomments.module.ts")).then(function (m) { return m.FcommentsPageModule; }); }
     },
     {
-        path: 'list',
-        loadChildren: function () { return __webpack_require__.e(/*! import() | list-list-module */ "list-list-module").then(__webpack_require__.bind(null, /*! ./list/list.module */ "./src/app/list/list.module.ts")).then(function (m) { return m.ListPageModule; }); }
-    }
+        path: '',
+        loadChildren: function () { return Promise.all(/*! import() | pages-lnews-lnews-module */[__webpack_require__.e("default~pages-digitales-digitales-module~pages-digitales-pages-digitaldetalle-digitaldetalle-module~~5f96c5b7"), __webpack_require__.e("common"), __webpack_require__.e("pages-lnews-lnews-module")]).then(__webpack_require__.bind(null, /*! ./pages/lnews/lnews.module */ "./src/app/pages/lnews/lnews.module.ts")).then(function (m) { return m.LnewsPageModule; }); }
+    },
+    {
+        path: 'ediciones',
+        loadChildren: function () { return Promise.all(/*! import() | pages-ediciones-ediciones-module */[__webpack_require__.e("default~pages-digitales-digitales-module~pages-digitales-pages-digitaldetalle-digitaldetalle-module~~5f96c5b7"), __webpack_require__.e("common"), __webpack_require__.e("pages-ediciones-ediciones-module")]).then(__webpack_require__.bind(null, /*! ./pages/ediciones/ediciones.module */ "./src/app/pages/ediciones/ediciones.module.ts")).then(function (m) { return m.EdicionesPageModule; }); }
+    },
+    {
+        path: 'ediciones/:id',
+        loadChildren: function () { return Promise.all(/*! import() | pages-ediciones-pages-edicionesposts-edicionesposts-module */[__webpack_require__.e("default~pages-digitales-digitales-module~pages-digitales-pages-digitaldetalle-digitaldetalle-module~~5f96c5b7"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null, /*! ./pages/ediciones/pages/edicionesposts/edicionesposts.module */ "./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.module.ts")).then(function (m) { return m.EdicionespostsPageModule; }); }
+    },
+    {
+        path: 'digitales',
+        loadChildren: function () { return Promise.all(/*! import() | pages-digitales-digitales-module */[__webpack_require__.e("default~pages-digitales-digitales-module~pages-digitales-pages-digitaldetalle-digitaldetalle-module~~5f96c5b7"), __webpack_require__.e("common"), __webpack_require__.e("pages-digitales-digitales-module")]).then(__webpack_require__.bind(null, /*! ./pages/digitales/digitales.module */ "./src/app/pages/digitales/digitales.module.ts")).then(function (m) { return m.DigitalesPageModule; }); }
+    },
+    {
+        path: 'digitales/:id',
+        loadChildren: function () { return Promise.all(/*! import() | pages-digitales-pages-digitaldetalle-digitaldetalle-module */[__webpack_require__.e("default~pages-digitales-digitales-module~pages-digitales-pages-digitaldetalle-digitaldetalle-module~~5f96c5b7"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null, /*! ./pages/digitales/pages/digitaldetalle/digitaldetalle.module */ "./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.module.ts")).then(function (m) { return m.DigitaldetallePageModule; }); }
+    },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -538,14 +554,24 @@ var AppComponent = /** @class */ (function () {
         this.statusBar = statusBar;
         this.appPages = [
             {
-                title: 'Home',
-                url: '/home',
+                title: 'Últimas noticias',
+                url: '',
                 icon: 'home'
             },
             {
-                title: 'List',
-                url: '/list',
-                icon: 'list'
+                title: 'Comentarios destacados',
+                url: '/featured_comments',
+                icon: 'chatbubbles'
+            },
+            {
+                title: 'Archivo de noticias',
+                url: '/ediciones',
+                icon: 'archive'
+            },
+            {
+                title: 'Ediciones digitales',
+                url: '/digitales',
+                icon: 'paper'
             }
         ];
         this.initializeApp();
@@ -593,11 +619,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
-/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
+/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _core_servicios_comments_services_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./core/servicios/comments-services.service */ "./src/app/core/servicios/comments-services.service.ts");
+/* harmony import */ var _core_servicios_posts_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./core/servicios/posts.service */ "./src/app/core/servicios/posts.service.ts");
 
 
 
@@ -605,6 +634,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+//services
 
 
 var AppModule = /** @class */ (function () {
@@ -612,22 +645,171 @@ var AppModule = /** @class */ (function () {
     }
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]],
             entryComponents: [],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
-                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"].forRoot(),
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"]
             ],
             providers: [
-                _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
-                _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
+                _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
+                _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"],
+                _core_servicios_comments_services_service__WEBPACK_IMPORTED_MODULE_10__["CommentsServicesService"],
+                _core_servicios_posts_service__WEBPACK_IMPORTED_MODULE_11__["PostsService"],
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/core/servicios/comments-services.service.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/core/servicios/comments-services.service.ts ***!
+  \*************************************************************/
+/*! exports provided: CommentsServicesService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentsServicesService", function() { return CommentsServicesService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+var CommentsServicesService = /** @class */ (function () {
+    function CommentsServicesService(http) {
+        this.http = http;
+        this.comments = [];
+    }
+    CommentsServicesService.prototype.getRawComments = function (page) {
+        var _this = this;
+        if (page === void 0) { page = 0; }
+        var link = page > 0 ? '/pages/163?_fields=_links&_embed&per_page=5&page' + page : '/pages/163?_fields=_links&_embed';
+        return this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].bUrl_tc + link).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (item) {
+            item = item._embedded.replies;
+            item[0].forEach(function (i) {
+                var comment;
+                comment = {
+                    author_name: i.author_name,
+                    date: i.date,
+                    rendered_comment: i.content.rendered,
+                    avatar_url: i.author_avatar_urls[48],
+                    permalink: i.link
+                };
+                _this.comments.push(comment);
+            });
+            return _this.comments;
+        }));
+    };
+    CommentsServicesService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    CommentsServicesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], CommentsServicesService);
+    return CommentsServicesService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/core/servicios/posts.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/core/servicios/posts.service.ts ***!
+  \*************************************************/
+/*! exports provided: PostsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostsService", function() { return PostsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+var PostsService = /** @class */ (function () {
+    function PostsService(http) {
+        this.http = http;
+        this.posts = [];
+    }
+    PostsService.prototype.getRawPosts = function (page) {
+        var _this = this;
+        if (page === void 0) { page = 0; }
+        this.posts = page > 0 ? this.posts : [];
+        var link = (page > 0 ? '/posts?categories=1615&_embed&_fields=date,link,title,content,excerpt,_links,_embedded&per_page=5&page=' + page : '/posts?categories=1615&_embed&_fields=date,link,title,content,excerpt,_links,_embedded');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].bUrl_tc + link).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (data) {
+            data.forEach(function (i) {
+                var post;
+                post = {
+                    date: i.date,
+                    link: i.link,
+                    title: i.title.rendered,
+                    content: i.content.rendered,
+                    excerpt: i.excerpt.rendered,
+                    featured_media_thumb: i._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url,
+                    featured_media_full: i._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url,
+                };
+                _this.posts.push(post);
+            });
+            return _this.posts;
+        }));
+    };
+    PostsService.prototype.getPostsByCategoryId = function (id, page) {
+        var _this = this;
+        if (page === void 0) { page = 0; }
+        this.posts = page > 0 ? this.posts : [];
+        var link = page > 0 ? '/posts?categories=' + id + '&_embed&_fields=date,link,title,content,excerpt,_links,_embedded&per_page=5&page=' + page : '/posts?categories=' + id + '&_embed&_fields=date,link,title,content,excerpt,_links,_embedded';
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].bUrl_tc + link).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (data) {
+            data.forEach(function (i) {
+                var post;
+                post = {
+                    date: i.date,
+                    link: i.link,
+                    title: i.title.rendered,
+                    content: i.content.rendered,
+                    excerpt: i.excerpt.rendered,
+                    featured_media_thumb: i._embedded['wp:featuredmedia'] != null ? i._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url : '',
+                    featured_media_full: i._embedded['wp:featuredmedia'] != null ? i._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '',
+                };
+                _this.posts.push(post);
+            });
+            return _this.posts;
+        }));
+    };
+    PostsService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    PostsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], PostsService);
+    return PostsService;
 }());
 
 
@@ -648,7 +830,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false
+    production: false,
+    bUrl_tc: 'http://periodicotierracaliente.co/wp-json/wp/v2'
 };
 /*
  * For easier debugging in development mode, you can import the following file

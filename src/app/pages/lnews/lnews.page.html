@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+      <ion-title>{{ title }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+          <div *ngIf="flag">
+              <ion-item lines="none">              
+                  <ion-spinner name="crescent"></ion-spinner>
+                  <ion-label>
+                     &nbsp;&nbsp;Cargando noticias
+                  </ion-label>
+                </ion-item> 
+          </div>
+                      
+       
+      
+      <app-posts *ngFor="let post of posts" [post]="post">
+
+      </app-posts>  
+
+      <ion-infinite-scroll (ionInfinite)="loadMore($event)" loadingSpinner="bubbles" loadingText="Cargando más noticias...">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+</ion-content>

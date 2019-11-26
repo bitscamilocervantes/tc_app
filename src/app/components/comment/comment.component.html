@@ -1,0 +1,12 @@
+<ion-item>
+    <ion-avatar slot="start">
+      <img [src]="comment.avatar_url">
+    </ion-avatar>
+    <ion-label class="ion-text-wrap">
+      <p>{{ comment.author_name }} - {{ comment.date | date: 'medium' }}</p>
+      <h3 [innerHTML]='comment.rendered_comment'></h3>
+      
+    </ion-label>
+    <app-commentbrowser [url]='comment.permalink' text="Permalink" slot="end"></app-commentbrowser>
+
+  </ion-item>

@@ -679,6 +679,760 @@ const findCheckedOption = (el, tagName) => {
 
 
 
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/pages/digitales/componentes/ediciondigital/ediciondigital.component.html":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/pages/digitales/componentes/ediciondigital/ediciondigital.component.html ***!
+  \********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-card>\n  <ion-card-content>\n    <ion-img [src]=\"post.featured_media_full\"></ion-img>\n    <ion-button (click)=\"openURL()\" expand=\"full\">Abrir edición digital</ion-button>\n\n  </ion-card-content>\n  \n</ion-card>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.html":
+/*!*********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.html ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n    <ion-title>{{ title }}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <div *ngIf=\"flag\">\n        <ion-item lines=\"none\">              \n            <ion-spinner name=\"crescent\"></ion-spinner>\n            <ion-label>\n               &nbsp;&nbsp;Cargando edición digital\n            </ion-label>\n          </ion-item> \n    </div>\n  \n  <app-ediciondigital *ngFor=\"let post of posts\" [post]=\"post\">\n\n  </app-ediciondigital>\n</ion-content>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.html":
+/*!*********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.html ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"start\">\n          <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n    <ion-title>{{ nombre_edicion }}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <div *ngIf=\"flag\">\n        <ion-item lines=\"none\">              \n            <ion-spinner name=\"crescent\"></ion-spinner>\n            <ion-label>\n               &nbsp;&nbsp;Cargando noticias\n            </ion-label>\n          </ion-item> \n    </div>\n  <app-posts *ngFor=\"let post of posts\" [post]=\"post\">\n\n  </app-posts>\n  <ion-infinite-scroll (ionInfinite)=\"loadMore($event)\" loadingSpinner=\"bubbles\" loadingText=\"Cargando más noticias...\">\n      <ion-infinite-scroll-content></ion-infinite-scroll-content>\n    </ion-infinite-scroll>\n</ion-content>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/shared/components/commentbrowser/commentbrowser.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/shared/components/commentbrowser/commentbrowser.component.html ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-button [slot]=\"slot != '' ? slot : end\" (click)=\"openURL()\">{{ text }}</ion-button>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/shared/components/ediciones/ediciones.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/shared/components/ediciones/ediciones.component.html ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"digital == 1\">\n    <ion-card [href]=\"'/digitales/'+edicion.id\">\n      <ion-card-header>\n        <ion-card-subtitle>{{ edicion.nombre }}</ion-card-subtitle>\n        <ion-card-title [innerHTML]='edicion.descripcion'></ion-card-title>\n      </ion-card-header>\n    </ion-card>\n</div>\n<div *ngIf=\"digital == null\">\n    <ion-card [href]=\"'/ediciones/'+edicion.id\">\n      <ion-card-header>\n        <ion-card-subtitle>{{ edicion.nombre }}</ion-card-subtitle>\n        <ion-card-title [innerHTML]='edicion.descripcion'></ion-card-title>\n      </ion-card-header>\n    </ion-card>\n</div>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/shared/components/posts/posts.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/shared/components/posts/posts.component.html ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>Publicado en {{ post.date | date: 'medium' }}</ion-card-subtitle>\n      <ion-card-title [innerHTML]='post.title'></ion-card-title>\n    </ion-card-header>\n  \n    <ion-card-content>\n        <ion-grid>\n            <ion-row>\n              <ion-col size=\"3\">\n                  <ion-img [src]=\"post.featured_media_thumb\" style=\"max-width:150px\"></ion-img>\n              </ion-col>\n              <ion-col size=\"9\">\n                <section [innerHTML]='post.excerpt'></section>\n              </ion-col>             \n            </ion-row>\n        </ion-grid>\n\n    </ion-card-content>\n    <ion-item>\n        <app-commentbrowser [url]='post.link' text=\"Leer más\" slot=\"end\"></app-commentbrowser>\n      </ion-item>\n  </ion-card>"
+
+/***/ }),
+
+/***/ "./src/app/core/servicios/ediciones.service.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/core/servicios/ediciones.service.ts ***!
+  \*****************************************************/
+/*! exports provided: EdicionesService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EdicionesService", function() { return EdicionesService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
+
+
+let EdicionesService = class EdicionesService {
+    constructor(http) {
+        this.http = http;
+        this.ediciones = [];
+    }
+    getRawEdiciones(id = 1617, page = 0) {
+        this.ediciones = page > 1 ? this.ediciones : [];
+        let link = (page > 0 ? '/categories?parent=' + id + '&per_page=7&page=' + page : '/categories?parent=' + id);
+        console.log(id);
+        console.log(link);
+        console.log(page);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].bUrl_tc + link).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(data => {
+            data.forEach(i => {
+                let edicion;
+                edicion = {
+                    id: i.id,
+                    nombre: i.name,
+                    descripcion: i.description,
+                    path: i.slug
+                };
+                this.ediciones.push(edicion);
+            });
+            return this.ediciones;
+        }));
+    }
+    getEdicionById(id) {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].bUrl_tc + '/categories/' + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(data => {
+            let edicion;
+            edicion = {
+                id: data.id,
+                nombre: data.name,
+                descripcion: data.description,
+                path: data.slug
+            };
+            return edicion;
+        }));
+    }
+};
+EdicionesService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+EdicionesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], EdicionesService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/digitales/componentes/ediciondigital/ediciondigital.component.scss":
+/*!******************************************************************************************!*\
+  !*** ./src/app/pages/digitales/componentes/ediciondigital/ediciondigital.component.scss ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2RpZ2l0YWxlcy9jb21wb25lbnRlcy9lZGljaW9uZGlnaXRhbC9lZGljaW9uZGlnaXRhbC5jb21wb25lbnQuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/pages/digitales/componentes/ediciondigital/ediciondigital.component.ts":
+/*!****************************************************************************************!*\
+  !*** ./src/app/pages/digitales/componentes/ediciondigital/ediciondigital.component.ts ***!
+  \****************************************************************************************/
+/*! exports provided: EdiciondigitalComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EdiciondigitalComponent", function() { return EdiciondigitalComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
+
+
+
+const { Browser } = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"];
+let EdiciondigitalComponent = class EdiciondigitalComponent {
+    constructor() { }
+    openURL() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            yield Browser.open({ url: this.post.link });
+        });
+    }
+    ngOnInit() {
+        console.log(this.post);
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], EdiciondigitalComponent.prototype, "post", void 0);
+EdiciondigitalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-ediciondigital',
+        template: __webpack_require__(/*! raw-loader!./ediciondigital.component.html */ "./node_modules/raw-loader/index.js!./src/app/pages/digitales/componentes/ediciondigital/ediciondigital.component.html"),
+        styles: [__webpack_require__(/*! ./ediciondigital.component.scss */ "./src/app/pages/digitales/componentes/ediciondigital/ediciondigital.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], EdiciondigitalComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle-routing.module.ts":
+/*!***************************************************************************************!*\
+  !*** ./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle-routing.module.ts ***!
+  \***************************************************************************************/
+/*! exports provided: DigitaldetallePageRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DigitaldetallePageRoutingModule", function() { return DigitaldetallePageRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _digitaldetalle_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./digitaldetalle.page */ "./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.ts");
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _digitaldetalle_page__WEBPACK_IMPORTED_MODULE_3__["DigitaldetallePage"]
+    }
+];
+let DigitaldetallePageRoutingModule = class DigitaldetallePageRoutingModule {
+};
+DigitaldetallePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+    })
+], DigitaldetallePageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.module.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.module.ts ***!
+  \*******************************************************************************/
+/*! exports provided: DigitaldetallePageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DigitaldetallePageModule", function() { return DigitaldetallePageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _digitaldetalle_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./digitaldetalle-routing.module */ "./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle-routing.module.ts");
+/* harmony import */ var _digitaldetalle_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./digitaldetalle.page */ "./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.ts");
+/* harmony import */ var _componentes_ediciondigital_ediciondigital_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../componentes/ediciondigital/ediciondigital.component */ "./src/app/pages/digitales/componentes/ediciondigital/ediciondigital.component.ts");
+
+
+
+
+
+
+
+
+let DigitaldetallePageModule = class DigitaldetallePageModule {
+};
+DigitaldetallePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _digitaldetalle_routing_module__WEBPACK_IMPORTED_MODULE_5__["DigitaldetallePageRoutingModule"]
+        ],
+        declarations: [
+            _digitaldetalle_page__WEBPACK_IMPORTED_MODULE_6__["DigitaldetallePage"],
+            _componentes_ediciondigital_ediciondigital_component__WEBPACK_IMPORTED_MODULE_7__["EdiciondigitalComponent"]
+        ],
+        exports: [
+            _componentes_ediciondigital_ediciondigital_component__WEBPACK_IMPORTED_MODULE_7__["EdiciondigitalComponent"]
+        ],
+        schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["NO_ERRORS_SCHEMA"]]
+    })
+], DigitaldetallePageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.scss":
+/*!*******************************************************************************!*\
+  !*** ./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.scss ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2RpZ2l0YWxlcy9wYWdlcy9kaWdpdGFsZGV0YWxsZS9kaWdpdGFsZGV0YWxsZS5wYWdlLnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.ts ***!
+  \*****************************************************************************/
+/*! exports provided: DigitaldetallePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DigitaldetallePage", function() { return DigitaldetallePage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_core_servicios_posts_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/core/servicios/posts.service */ "./src/app/core/servicios/posts.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+let DigitaldetallePage = class DigitaldetallePage {
+    constructor(postsService, activatedRoute) {
+        this.postsService = postsService;
+        this.activatedRoute = activatedRoute;
+        this.id = null;
+        this.flag = true;
+    }
+    fetchPosts(cid) {
+        this.postsService.getPostsByCategoryId(cid).subscribe((data) => {
+            this.flag = false;
+            if (data.length == 0) {
+                this.posts = null;
+                this.title = 'Edición digital';
+            }
+            else {
+                this.posts = data;
+                this.title = data[0].title;
+            }
+            console.log(data);
+        }, (error) => {
+            console.error(error);
+        });
+    }
+    ngOnInit() {
+        this.id = this.activatedRoute.snapshot.paramMap.get('id');
+        if (this.id > 0) {
+            this.fetchPosts(this.id);
+        }
+    }
+};
+DigitaldetallePage.ctorParameters = () => [
+    { type: src_app_core_servicios_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }
+];
+DigitaldetallePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-digitaldetalle',
+        template: __webpack_require__(/*! raw-loader!./digitaldetalle.page.html */ "./node_modules/raw-loader/index.js!./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.html"),
+        styles: [__webpack_require__(/*! ./digitaldetalle.page.scss */ "./src/app/pages/digitales/pages/digitaldetalle/digitaldetalle.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_core_servicios_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]])
+], DigitaldetallePage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/ediciones/pages/edicionesposts/edicionesposts-routing.module.ts":
+/*!***************************************************************************************!*\
+  !*** ./src/app/pages/ediciones/pages/edicionesposts/edicionesposts-routing.module.ts ***!
+  \***************************************************************************************/
+/*! exports provided: EdicionespostsPageRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EdicionespostsPageRoutingModule", function() { return EdicionespostsPageRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _edicionesposts_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edicionesposts.page */ "./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.ts");
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _edicionesposts_page__WEBPACK_IMPORTED_MODULE_3__["EdicionespostsPage"]
+    }
+];
+let EdicionespostsPageRoutingModule = class EdicionespostsPageRoutingModule {
+};
+EdicionespostsPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+    })
+], EdicionespostsPageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.module.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.module.ts ***!
+  \*******************************************************************************/
+/*! exports provided: EdicionespostsPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EdicionespostsPageModule", function() { return EdicionespostsPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _edicionesposts_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./edicionesposts-routing.module */ "./src/app/pages/ediciones/pages/edicionesposts/edicionesposts-routing.module.ts");
+/* harmony import */ var _edicionesposts_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./edicionesposts.page */ "./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.ts");
+/* harmony import */ var src_app_shared_components_shared_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/shared/components/shared.module */ "./src/app/shared/components/shared.module.ts");
+
+
+
+
+
+
+
+
+let EdicionespostsPageModule = class EdicionespostsPageModule {
+};
+EdicionespostsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _edicionesposts_routing_module__WEBPACK_IMPORTED_MODULE_5__["EdicionespostsPageRoutingModule"],
+            src_app_shared_components_shared_module__WEBPACK_IMPORTED_MODULE_7__["SharedModule"]
+        ],
+        declarations: [_edicionesposts_page__WEBPACK_IMPORTED_MODULE_6__["EdicionespostsPage"]]
+    })
+], EdicionespostsPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.scss":
+/*!*******************************************************************************!*\
+  !*** ./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.scss ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2VkaWNpb25lcy9wYWdlcy9lZGljaW9uZXNwb3N0cy9lZGljaW9uZXNwb3N0cy5wYWdlLnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.ts ***!
+  \*****************************************************************************/
+/*! exports provided: EdicionespostsPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EdicionespostsPage", function() { return EdicionespostsPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_core_servicios_posts_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/core/servicios/posts.service */ "./src/app/core/servicios/posts.service.ts");
+/* harmony import */ var src_app_core_servicios_ediciones_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/core/servicios/ediciones.service */ "./src/app/core/servicios/ediciones.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+
+let EdicionespostsPage = class EdicionespostsPage {
+    constructor(activatedRoute, postsService, edicionesService) {
+        this.activatedRoute = activatedRoute;
+        this.postsService = postsService;
+        this.edicionesService = edicionesService;
+        this.id = null;
+        this.title = "Noticias de la edición";
+        this.flag = true;
+        this.page = 1;
+        this.maximumPages = 3;
+    }
+    fetchPostsByEdicionId(cid) {
+        this.postsService.getPostsByCategoryId(cid, this.page).subscribe((data) => {
+            this.posts = data;
+            this.flag = false;
+            console.log(data);
+        }, (error) => {
+            console.error(error);
+        });
+    }
+    fetchEdicionById(cid) {
+        this.edicionesService.getEdicionById(cid).subscribe((data) => {
+            this.edicion = data;
+            this.nombre_edicion = this.edicion.nombre;
+            console.log(this.edicion.nombre);
+        }, (error) => {
+            console.error(error);
+        });
+    }
+    loadMore(event) {
+        this.page++;
+        this.id = this.activatedRoute.snapshot.paramMap.get('id');
+        if (this.id > 0) {
+            this.fetchPostsByEdicionId(this.id);
+        }
+        if (this.page === this.maximumPages) {
+            event.target.disabled = true;
+        }
+    }
+    ngOnInit() {
+        this.id = this.activatedRoute.snapshot.paramMap.get('id');
+        if (this.id > 0) {
+            this.fetchPostsByEdicionId(this.id);
+            this.fetchEdicionById(this.id);
+        }
+    }
+};
+EdicionespostsPage.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: src_app_core_servicios_posts_service__WEBPACK_IMPORTED_MODULE_3__["PostsService"] },
+    { type: src_app_core_servicios_ediciones_service__WEBPACK_IMPORTED_MODULE_4__["EdicionesService"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonInfiniteScroll"], null),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonInfiniteScroll"])
+], EdicionespostsPage.prototype, "infiniteScroll", void 0);
+EdicionespostsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-edicionesposts',
+        template: __webpack_require__(/*! raw-loader!./edicionesposts.page.html */ "./node_modules/raw-loader/index.js!./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.html"),
+        styles: [__webpack_require__(/*! ./edicionesposts.page.scss */ "./src/app/pages/ediciones/pages/edicionesposts/edicionesposts.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+        src_app_core_servicios_posts_service__WEBPACK_IMPORTED_MODULE_3__["PostsService"],
+        src_app_core_servicios_ediciones_service__WEBPACK_IMPORTED_MODULE_4__["EdicionesService"]])
+], EdicionespostsPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/components/commentbrowser/commentbrowser.component.scss":
+/*!********************************************************************************!*\
+  !*** ./src/app/shared/components/commentbrowser/commentbrowser.component.scss ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL2NvbW1lbnRicm93c2VyL2NvbW1lbnRicm93c2VyLmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/shared/components/commentbrowser/commentbrowser.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/shared/components/commentbrowser/commentbrowser.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: CommentbrowserComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentbrowserComponent", function() { return CommentbrowserComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
+
+
+
+const { Browser } = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"];
+let CommentbrowserComponent = class CommentbrowserComponent {
+    constructor() { }
+    openURL() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            yield Browser.open({ url: this.url });
+        });
+    }
+    ngOnInit() { }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], CommentbrowserComponent.prototype, "url", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], CommentbrowserComponent.prototype, "text", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], CommentbrowserComponent.prototype, "slot", void 0);
+CommentbrowserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-commentbrowser',
+        template: __webpack_require__(/*! raw-loader!./commentbrowser.component.html */ "./node_modules/raw-loader/index.js!./src/app/shared/components/commentbrowser/commentbrowser.component.html"),
+        styles: [__webpack_require__(/*! ./commentbrowser.component.scss */ "./src/app/shared/components/commentbrowser/commentbrowser.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], CommentbrowserComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/components/ediciones/ediciones.component.scss":
+/*!**********************************************************************!*\
+  !*** ./src/app/shared/components/ediciones/ediciones.component.scss ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL2VkaWNpb25lcy9lZGljaW9uZXMuY29tcG9uZW50LnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/shared/components/ediciones/ediciones.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/shared/components/ediciones/ediciones.component.ts ***!
+  \********************************************************************/
+/*! exports provided: EdicionesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EdicionesComponent", function() { return EdicionesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let EdicionesComponent = class EdicionesComponent {
+    constructor() { }
+    ngOnInit() {
+        if (this.digital != 1) {
+            this.digital = null;
+        }
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], EdicionesComponent.prototype, "edicion", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+], EdicionesComponent.prototype, "digital", void 0);
+EdicionesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-edicion',
+        template: __webpack_require__(/*! raw-loader!./ediciones.component.html */ "./node_modules/raw-loader/index.js!./src/app/shared/components/ediciones/ediciones.component.html"),
+        styles: [__webpack_require__(/*! ./ediciones.component.scss */ "./src/app/shared/components/ediciones/ediciones.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], EdicionesComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/components/posts/posts.component.scss":
+/*!**************************************************************!*\
+  !*** ./src/app/shared/components/posts/posts.component.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL3Bvc3RzL3Bvc3RzLmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/shared/components/posts/posts.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/shared/components/posts/posts.component.ts ***!
+  \************************************************************/
+/*! exports provided: PostsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostsComponent", function() { return PostsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let PostsComponent = class PostsComponent {
+    constructor() { }
+    ngOnInit() { }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], PostsComponent.prototype, "post", void 0);
+PostsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-posts',
+        template: __webpack_require__(/*! raw-loader!./posts.component.html */ "./node_modules/raw-loader/index.js!./src/app/shared/components/posts/posts.component.html"),
+        styles: [__webpack_require__(/*! ./posts.component.scss */ "./src/app/shared/components/posts/posts.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], PostsComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/components/shared.module.ts":
+/*!****************************************************!*\
+  !*** ./src/app/shared/components/shared.module.ts ***!
+  \****************************************************/
+/*! exports provided: SharedModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SharedModule", function() { return SharedModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _commentbrowser_commentbrowser_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./commentbrowser/commentbrowser.component */ "./src/app/shared/components/commentbrowser/commentbrowser.component.ts");
+/* harmony import */ var _posts_posts_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./posts/posts.component */ "./src/app/shared/components/posts/posts.component.ts");
+/* harmony import */ var _ediciones_ediciones_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ediciones/ediciones.component */ "./src/app/shared/components/ediciones/ediciones.component.ts");
+
+
+
+
+
+
+let SharedModule = class SharedModule {
+};
+SharedModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [
+            _commentbrowser_commentbrowser_component__WEBPACK_IMPORTED_MODULE_3__["CommentbrowserComponent"],
+            _posts_posts_component__WEBPACK_IMPORTED_MODULE_4__["PostsComponent"],
+            _ediciones_ediciones_component__WEBPACK_IMPORTED_MODULE_5__["EdicionesComponent"]
+        ],
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
+        ],
+        exports: [
+            _commentbrowser_commentbrowser_component__WEBPACK_IMPORTED_MODULE_3__["CommentbrowserComponent"],
+            _posts_posts_component__WEBPACK_IMPORTED_MODULE_4__["PostsComponent"],
+            _ediciones_ediciones_component__WEBPACK_IMPORTED_MODULE_5__["EdicionesComponent"]
+        ],
+        schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["NO_ERRORS_SCHEMA"]]
+    })
+], SharedModule);
+
+
+
 /***/ })
 
 }]);
