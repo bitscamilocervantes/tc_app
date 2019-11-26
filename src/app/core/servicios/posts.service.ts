@@ -15,7 +15,7 @@ export class PostsService {
   posts:Posts[] = [];
 
   getRawPosts(page:number = 0) : Observable<Posts[]>{
-    this.posts = page > 0 ? this.posts : [];
+    this.posts = page > 1 ? this.posts : [];
     let link:string = (page > 0 ? '/posts?categories=1615&_embed&_fields=date,link,title,content,excerpt,_links,_embedded&per_page=5&page='+page : '/posts?categories=1615&_embed&_fields=date,link,title,content,excerpt,_links,_embedded' )
     return this.http.get<any>(environment.bUrl_tc+link).pipe(
       map(data => {        
@@ -38,7 +38,7 @@ export class PostsService {
   }
 
   getPostsByCategoryId(id:number,page:number = 0) : Observable<Posts[]>{
-    this.posts = page > 0 ? this.posts : [];
+    this.posts = page > 1 ? this.posts : [];
     let link:string = page > 0 ? '/posts?categories='+id+'&_embed&_fields=date,link,title,content,excerpt,_links,_embedded&per_page=5&page='+page : '/posts?categories='+id+'&_embed&_fields=date,link,title,content,excerpt,_links,_embedded';
     return this.http.get<any>(environment.bUrl_tc+link).pipe(
       map(data => {        
